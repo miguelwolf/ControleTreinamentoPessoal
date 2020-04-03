@@ -1,25 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Controle Treinamento Pessoal</string>
-    <string name="action_settings">Opções</string>
+    <string name="app_name" translatable="false">Controle Treinamento Pessoal</string>
+    <string name="action_settings" translatable="false">Opções</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">Primeiro Fragment</string>
-    <string name="second_fragment_label">Segundo Fragment</string>
-    <string name="next">Próximo</string>
-    <string name="previous">Anterior</string>
+    <string name="first_fragment_label" translatable="false">Primeiro Fragment</string>
+    <string name="second_fragment_label" translatable="false">Segundo Fragment</string>
+    <string name="next" translatable="false">Próximo</string>
+    <string name="previous" translatable="false">Anterior</string>
 
-    <string name="hello_first_fragment">Olá primeiro fragment</string>
-    <string name="hello_second_fragment">Olá segundo fragment. Arg: %1$s</string>
-    <string name="voltar">Voltar</string>
-    <string name="peso">Peso</string>
-    <string name="altura">Altura</string>
-    <string name="exercicio">Exercício</string>
-    <string name="descricao">Descrição</string>
-    <string name="cadastro">Cadastro</string>
-    <string name="cadasto_descricao">Formulário para cadastrar uma nova rotina de exercícios</string>
-    <string name="tempo">Tempo</string>
-    <string name="repeticoes">Repetições</string>
-    <string name="exercicios">Exercícios</string>
-    <string name="livre">Livre</string>
+    <string name="hello_first_fragment" translatable="false">Olá primeiro fragment</string>
+    <string name="hello_second_fragment" translatable="false">Olá segundo fragment. Arg: %1$s</string>
+    <string name="voltar" translatable="false">Voltar</string>
+    <string name="peso" translatable="false">Peso</string>
+    <string name="altura" translatable="false">Altura</string>
+    <string name="exercicio" translatable="false">Exercício</string>
+    <string name="descricao" translatable="false">Descrição</string>
+    <string name="cadastro" translatable="false">Cadastro</string>
+    <string name="cadasto_descricao" translatable="false">Formulário para cadastrar uma nova rotina de exercícios</string>
+    <string name="tempo" translatable="false">Tempo</string>
+    <string name="repeticoes" translatable="false">Repetições</string>
+    <string name="exercicios" translatable="false">Exercícios</string>
+    <string name="livre" translatable="false">Livre</string>
 
     <string name="dom">Dom</string>
     <string name="seg">Seg</string>
