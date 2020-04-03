@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">Controle Treinamento Pessoal</string>
+    <string name="action_settings">Opções</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">Primeiro Fragment</string>
+    <string name="second_fragment_label">Segundo Fragment</string>
+    <string name="next">Próximo</string>
+    <string name="previous">Anterior</string>
+
+    <string name="hello_first_fragment">Olá primeiro fragment</string>
+    <string name="hello_second_fragment">Olá segundo fragment. Arg: %1$s</string>
+    <string name="voltar">Voltar</string>
+    <string name="peso">Peso</string>
+    <string name="altura">Altura</string>
+    <string name="exercicio">Exercício</string>
+    <string name="descricao">Descrição</string>
+    <string name="cadastro">Cadastro</string>
+    <string name="cadasto_descricao">Formulário para cadastrar uma nova rotina de exercícios</string>
+    <string name="tempo">Tempo</string>
+    <string name="repeticoes">Repetições</string>
+    <string name="exercicios">Exercícios</string>
+    <string name="livre">Livre</string>
+
+    <string name="dom">Dom</string>
+    <string name="seg">Seg</string>
+    <string name="ter">Ter</string>
+    <string name="qua">Qua</string>
+    <string name="qui">Qui</string>
+    <string name="sex">Sex</string>
+    <string name="sab">Sab</string>
+    <string name="limpar">Limpar</string>
+    <string name="salvar">Salvar</string>
+    <string name="campo_obrigatório">Campo obrigatório</string>
+    <string name="tempo_min">Tempo (min.)</string>
+    <string name="passo_a_passo">Passo a passo</string>
+    <string name="nome">Nome</string>
+    <string name="dados_salvos">Dados salvos</string>
+    <string name="campos_obrigatorios_vazios">Campos obrigatórios, vazios</string>
+    <string name="campos_limpados">Campos limpados</string>
+    <string name="lista_treinos">LIsta de Treinos</string>
+    <string name="treinos_info">"Treino: %1$s\n\nDescrição: %2$s\n\nTipo: %3$s\n\nDias: %4$s"</string>
+    <string name="sobre_descricao">Miguel Wolf Bernardino\n\nPós-graduação em Tecnologia Java - miguel.w.b@hotmail.com\n\n\nAplicativo para controle de treinos ou atividades físicas, possibilitando criar treinos personalizados para acompanh-los e controlá-los</string>
+    <string name="utfpr">UTFPR - Universidade Tecnológica Federal do Paraná\n\n <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div></string>
+    <string name="adicionar">Adicionar</string>
+    <string name="sobre">Sobre</string>
+</resources>

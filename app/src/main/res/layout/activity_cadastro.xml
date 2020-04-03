@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    android:theme="@style/AppTheme.NoActionBar"
+    tools:context=".controller.CadastroActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <include
+            android:id="@+id/cadastro_toolbar"
+            layout="@layout/toolbar"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cadastro_toolbar">
+
+            <TextView
+                android:id="@+id/cadastro_tv_descricao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:text="@string/cadasto_descricao"
+                android:textAlignment="center"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/cadastro_et_nome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:maxLines="1"
+                android:imeOptions="actionNext"
+                android:backgroundTint="@color/colorAccent"
+                android:hint="@string/nome"
+                android:textColor="@color/colorText"
+                android:textColorHint="@color/colorText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cadastro_tv_descricao" />
+
+            <EditText
+                android:id="@+id/cadastro_et_descricao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:maxLines="1"
+                android:imeOptions="actionNext"
+                android:backgroundTint="@color/colorAccent"
+                android:hint="@string/descricao"
+                android:textColor="@color/colorText"
+                android:textColorHint="@color/colorText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cadastro_et_nome" />
+
+            <EditText
+                android:id="@+id/cadastro_et_passo_a_passo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:imeOptions="actionNext"
+                android:backgroundTint="@color/colorAccent"
+                android:hint="@string/passo_a_passo"
+                android:textColor="@color/colorText"
+                android:textColorHint="@color/colorText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cadastro_et_descricao" />
+
+            <TextView
+                android:id="@+id/cadastro_tv_exercícios_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:text="@string/exercicios"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cadastro_et_passo_a_passo" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/cadastro_sp_exercicios"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:theme="@style/spinnerTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cadastro_tv_exercícios_spinner" />
+
+            <RadioGroup
+                android:id="@+id/cadastro_rg_forma_contar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cadastro_sp_exercicios">
+
+                <RadioButton
+                    android:id="@+id/cadastro_rb_tempo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/colorAccent"
+                    android:text="@string/tempo"
+                    android:textColor="@color/colorWhite" />
+
+                <RadioButton
+                    android:id="@+id/cadastro_rb_repeticoes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/colorAccent"
+                    android:text="@string/repeticoes"
+                    android:textColor="@color/colorWhite" />
+
+                <RadioButton
+                    android:id="@+id/cadastro_rb_livre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/colorAccent"
+                    android:text="@string/livre"
+                    android:textColor="@color/colorWhite" />
+
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/cadastro_et_tempo_repeticoes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:maxLines="1"
+                android:imeOptions="actionNext"
+                android:backgroundTint="@color/colorAccent"
+                android:hint="@string/tempo"
+                android:textColor="@color/colorText"
+                android:textColorHint="@color/colorText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cadastro_rg_forma_contar" />
+
+            <CheckBox
+                android:id="@+id/cadastro_cb_seg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:buttonTint="@color/colorAccent"
+                android:text="@string/seg"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintEnd_toStartOf="@+id/cadastro_cb_ter"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cadastro_et_tempo_repeticoes" />
+
+            <CheckBox
+                android:id="@+id/cadastro_cb_ter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:buttonTint="@color/colorAccent"
+                android:text="@string/ter"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintEnd_toStartOf="@+id/cadastro_cb_qua"
+                app:layout_constraintStart_toEndOf="@+id/cadastro_cb_seg"
+                app:layout_constraintTop_toBottomOf="@+id/cadastro_et_tempo_repeticoes" />
+
+            <CheckBox
+                android:id="@+id/cadastro_cb_qua"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:buttonTint="@color/colorAccent"
+                android:text="@string/qua"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintEnd_toStartOf="@+id/cadastro_cb_qui"
+                app:layout_constraintStart_toEndOf="@+id/cadastro_cb_ter"
+                app:layout_constraintTop_toBottomOf="@+id/cadastro_et_tempo_repeticoes" />
+
+            <CheckBox
+                android:id="@+id/cadastro_cb_qui"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:buttonTint="@color/colorAccent"
+                android:text="@string/qui"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cadastro_cb_qua"
+                app:layout_constraintTop_toBottomOf="@+id/cadastro_et_tempo_repeticoes" />
+
+            <CheckBox
+                android:id="@+id/cadastro_cb_sex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:buttonTint="@color/colorAccent"
+                android:text="@string/sex"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintEnd_toStartOf="@+id/cadastro_cb_sab"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cadastro_cb_seg" />
+
+            <CheckBox
+                android:id="@+id/cadastro_cb_sab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:buttonTint="@color/colorAccent"
+                android:text="@string/sab"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintEnd_toStartOf="@+id/cadastro_cb_dom"
+                app:layout_constraintStart_toEndOf="@+id/cadastro_cb_sex"
+                app:layout_constraintTop_toBottomOf="@+id/cadastro_cb_seg" />
+
+            <CheckBox
+                android:id="@+id/cadastro_cb_dom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="32dp"
+                android:buttonTint="@color/colorAccent"
+                android:text="@string/dom"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cadastro_cb_sab"
+                app:layout_constraintTop_toBottomOf="@+id/cadastro_cb_seg" />
+
+            <Button
+                android:id="@+id/cadastro_btn_salvar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="32dp"
+                android:backgroundTint="@color/colorAccent"
+                android:text="@string/salvar"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/cadastro_btn_limpar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cadastro_cb_sex" />
+
+            <Button
+                android:id="@+id/cadastro_btn_limpar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="32dp"
+                android:backgroundTint="@color/colorAccent"
+                android:text="@string/limpar"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cadastro_btn_salvar"
+                app:layout_constraintTop_toBottomOf="@+id/cadastro_cb_sex" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

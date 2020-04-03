@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">Personal Training Control</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="voltar">Back</string>
+    <string name="peso">Weight</string>
+    <string name="altura">Stature</string>
+    <string name="exercicio">Exercise</string>
+    <string name="descricao">Description</string>
+    <string name="cadastro">Register</string>
+    <string name="cadasto_descricao">Form to register a new exercise routine</string>
+    <string name="tempo">Time</string>
+    <string name="repeticoes">Repetitions</string>
+    <string name="exercicios">Exercises</string>
+    <string name="livre">Free</string>
+
+    <string name="dom">Sun</string>
+    <string name="seg">Mon</string>
+    <string name="ter">Tue</string>
+    <string name="qua">Wed</string>
+    <string name="qui">Thu</string>
+    <string name="sex">Fri</string>
+    <string name="sab">Sat</string>
+    <string name="limpar">Clean</string>
+    <string name="salvar">Save</string>
+    <string name="campo_obrigatório">Required field</string>
+    <string name="tempo_min">Time (min.)</string>
+    <string name="passo_a_passo">Step by step</string>
+    <string name="nome">Name</string>
+    <string name="dados_salvos">Saved data</string>
+    <string name="campos_obrigatorios_vazios">Required fields, empties</string>
+    <string name="campos_limpados">Fields cleaned</string>
+    <string name="lista_treinos">Training list</string>
+    <string name="treinos_info">"Training: %1$s\n\Description: %2$s\n\nType: %3$s\n\nDays: %4$s"</string>
+    <string name="sobre_descricao">Miguel Wolf Bernardino\n\nPostgraduate in Java Technology - miguel.w.b@hotmail.com\n\n\nApplication for training control or physical activities, making possible to create personalized training to accompany and control them</string>
+    <string name="utfpr">UTFPR - Universidade Tecnológica Federal do Paraná\n\n <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div></string>
+    <string name="adicionar">Adicionar</string>
+    <string name="sobre">About</string>
+</resources>

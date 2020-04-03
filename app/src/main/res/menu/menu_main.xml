@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="br.com.miguelwolf.controletreinamentopessoal.controller.MainActivity">
+    <item
+        android:id="@+id/menu_main_adicionar"
+        android:orderInCategory="100"
+        android:title="@string/adicionar"
+        android:icon="@drawable/ic_add_24px"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/menu_main_sobre"
+        android:orderInCategory="100"
+        android:title="@string/adicionar"
+        app:showAsAction="ifRoom" />
+</menu>
