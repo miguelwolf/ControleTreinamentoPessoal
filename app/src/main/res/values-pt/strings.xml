@@ -44,4 +44,8 @@
     <string name="utfpr">UTFPR - Universidade Tecnológica Federal do Paraná\n\n <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div></string>
     <string name="adicionar">Adicionar</string>
     <string name="sobre">Sobre</string>
+    <string name="alterar">Alterar</string>
+    <string name="excluir">Excluir</string>
+    <string name="novo_treino">Novo Treino</string>
+    <string name="alterar_treino">Alterar Treino</string>
 </resources>

@@ -35,8 +35,7 @@
         android:visibility="gone"
         android:textColor="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_abl" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/activity_rv"
@@ -45,7 +44,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_abl" />
+        app:layout_constraintTop_toTopOf="@+id/activity_tv_lista" />
 
 <!--    <Button-->
 <!--        android:id="@+id/main_adicionar"-->

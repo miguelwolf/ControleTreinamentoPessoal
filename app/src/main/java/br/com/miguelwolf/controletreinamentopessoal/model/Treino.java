@@ -14,8 +14,13 @@ public class Treino implements Parcelable, Cloneable {
     private String descricao;
     private String passoAPasso;
     private String tempoRepeticoes;
-    private int tipoExercícios;
+    private int tipoTempo;
+    private int tipoExercicios;
     private int seg, ter, qua, qui, sex, sab, dom;
+
+    public static int TIPO_TEMPO_TEMPO = 0,
+                            TIPO_TEMPO_REPETICOES = 1,
+                            TIPO_TEMPO_LIVRE = 2;
 
     public static String[] EXERCICIOS_ARRAY = { "Treino Funcional",
             "Corrida",
@@ -28,12 +33,13 @@ public class Treino implements Parcelable, Cloneable {
     public Treino() {
     }
 
-    public Treino(String nome, String descricao, String passoAPasso, String tempoRepeticoes, int tipoExercícios, int seg, int ter, int qua, int qui, int sex, int sab, int dom) {
+    public Treino(String nome, String descricao, String passoAPasso, String tempoRepeticoes, int tipoTempo, int tipoExercicios, int seg, int ter, int qua, int qui, int sex, int sab, int dom) {
         this.nome = nome;
         this.descricao = descricao;
         this.passoAPasso = passoAPasso;
         this.tempoRepeticoes = tempoRepeticoes;
-        this.tipoExercícios = tipoExercícios;
+        this.tipoTempo = tipoTempo;
+        this.tipoExercicios = tipoExercicios;
         this.seg = seg;
         this.ter = ter;
         this.qua = qua;
@@ -42,7 +48,6 @@ public class Treino implements Parcelable, Cloneable {
         this.sab = sab;
         this.dom = dom;
     }
-
 
     public static ArrayList<Treino> getList(int cont) {
 
@@ -61,7 +66,7 @@ public class Treino implements Parcelable, Cloneable {
 
             List<Integer> mListExercicios = Arrays.asList(0,1,2,3,4,5,6);
             Collections.shuffle(mListExercicios);
-            t.setTipoExercícios(mListExercicios.get(0));
+            t.setTipoExercicios(mListExercicios.get(0));
 
             List<Integer> mListSeg = Arrays.asList(1, 0);
             Collections.shuffle(mListSeg);
@@ -129,14 +134,6 @@ public class Treino implements Parcelable, Cloneable {
         this.tempoRepeticoes = tempoRepeticoes;
     }
 
-    public int getTipoExercicios() {
-        return tipoExercícios;
-    }
-
-    public void setTipoExercícios(int tipoExercícios) {
-        this.tipoExercícios = tipoExercícios;
-    }
-
     public int getSeg() {
         return seg;
     }
@@ -193,6 +190,22 @@ public class Treino implements Parcelable, Cloneable {
         this.dom = dom;
     }
 
+    public int getTipoTempo() {
+        return tipoTempo;
+    }
+
+    public void setTipoTempo(int tipoTempo) {
+        this.tipoTempo = tipoTempo;
+    }
+
+    public int getTipoExercicios() {
+        return tipoExercicios;
+    }
+
+    public void setTipoExercicios(int tipoExercicios) {
+        this.tipoExercicios = tipoExercicios;
+    }
+
     @Override
     public Object clone() {
         Parcel parcel = Parcel.obtain();
@@ -211,7 +224,8 @@ public class Treino implements Parcelable, Cloneable {
         descricao = in.readString();
         passoAPasso = in.readString();
         tempoRepeticoes = in.readString();
-        tipoExercícios = in.readInt();
+        tipoExercicios = in.readInt();
+        tipoTempo = in.readInt();
         seg = in.readInt();
         ter = in.readInt();
         qua = in.readInt();
@@ -233,7 +247,8 @@ public class Treino implements Parcelable, Cloneable {
         dest.writeString(descricao);
         dest.writeString(passoAPasso);
         dest.writeString(tempoRepeticoes);
-        dest.writeInt(tipoExercícios);
+        dest.writeInt(tipoExercicios);
+        dest.writeInt(tipoTempo);
         dest.writeInt(seg);
         dest.writeInt(ter);
         dest.writeInt(qua);

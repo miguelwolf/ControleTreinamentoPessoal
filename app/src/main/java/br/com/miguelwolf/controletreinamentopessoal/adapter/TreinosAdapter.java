@@ -181,7 +181,7 @@ public class TreinosAdapter extends RecyclerView.Adapter<TreinosAdapter.MyViewHo
 
 
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
 
         private ConstraintLayout clFrete;
         private TextView tvFrete;
@@ -195,6 +195,8 @@ public class TreinosAdapter extends RecyclerView.Adapter<TreinosAdapter.MyViewHo
 
             itemView.setOnClickListener(this);
             clFrete.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
+            clFrete.setOnLongClickListener(this);
 
         }
 
@@ -205,6 +207,14 @@ public class TreinosAdapter extends RecyclerView.Adapter<TreinosAdapter.MyViewHo
             if (mRecyclerViewOnClickListenerHack != null) {
                 mRecyclerViewOnClickListenerHack.onClickListener(view, getLayoutPosition());
             }
+        }
+
+        @Override
+        public boolean onLongClick(View view) {
+            if (mRecyclerViewOnClickListenerHack != null) {
+                mRecyclerViewOnClickListenerHack.onLongClick(view, getLayoutPosition());
+            }
+            return true;
         }
     };
 }

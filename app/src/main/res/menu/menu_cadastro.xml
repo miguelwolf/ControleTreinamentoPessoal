@@ -3,15 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="br.com.miguelwolf.controletreinamentopessoal.controller.MainActivity">
     <item
-        android:id="@+id/menu_main_adicionar"
+        android:id="@+id/menu_cadastro_salvar"
         android:orderInCategory="100"
-        android:title="@string/adicionar"
-        android:icon="@drawable/ic_add_24px"
-        android:iconTint="@color/colorWhite"
+        android:title="@string/salvar"
+        android:icon="@drawable/ic_save_white_18dp"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/menu_main_sobre"
+        android:id="@+id/menu_cadastro_limpar"
         android:orderInCategory="100"
-        android:title="@string/sobre"
-        app:showAsAction="never" />
+        android:icon="@drawable/ic_clear_white_18dp"
+        android:title="@string/limpar"
+        app:showAsAction="ifRoom" />
 </menu>

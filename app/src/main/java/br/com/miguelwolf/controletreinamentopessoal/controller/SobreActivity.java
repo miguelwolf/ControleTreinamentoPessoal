@@ -1,36 +1,32 @@
 package br.com.miguelwolf.controletreinamentopessoal.controller;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
+import android.view.MenuItem;
 
 import br.com.miguelwolf.controletreinamentopessoal.R;
 
-public class SobreActivity extends AppCompatActivity implements View.OnClickListener {
+public class SobreActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sobre);
 
-        ((TextView) findViewById(R.id.toolbar_tv_titulo)).setText(getString(R.string.sobre));
-        findViewById(R.id.toolbar_iv_voltar).setOnClickListener(this);
+        setTitle(getString(R.string.sobre));
+
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
     }
 
     @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-
-            case R.id.toolbar_iv_voltar:
-                onBackPressed();
-                break;
-
-            default:
-                break;
-
-        }
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        super.onBackPressed();
+        return true;
     }
 
     @Override

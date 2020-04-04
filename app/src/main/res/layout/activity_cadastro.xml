@@ -16,13 +16,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <include
-            android:id="@+id/cadastro_toolbar"
-            layout="@layout/toolbar"
-            android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <include-->
+<!--            android:id="@+id/cadastro_toolbar"-->
+<!--            layout="@layout/toolbar"-->
+<!--            android:visibility="visible"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -31,7 +31,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cadastro_toolbar">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/cadastro_tv_descricao"
@@ -237,9 +237,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginBottom="32dp"
                 android:buttonTint="@color/colorAccent"
                 android:text="@string/sex"
                 android:textColor="@color/colorWhite"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/cadastro_cb_sab"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cadastro_cb_seg" />
@@ -250,9 +252,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginBottom="32dp"
                 android:buttonTint="@color/colorAccent"
                 android:text="@string/sab"
                 android:textColor="@color/colorWhite"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/cadastro_cb_dom"
                 app:layout_constraintStart_toEndOf="@+id/cadastro_cb_sex"
                 app:layout_constraintTop_toBottomOf="@+id/cadastro_cb_seg" />
@@ -268,39 +272,40 @@
                 android:buttonTint="@color/colorAccent"
                 android:text="@string/dom"
                 android:textColor="@color/colorWhite"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/cadastro_cb_sab"
                 app:layout_constraintTop_toBottomOf="@+id/cadastro_cb_seg" />
 
-            <Button
-                android:id="@+id/cadastro_btn_salvar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginBottom="32dp"
-                android:backgroundTint="@color/colorAccent"
-                android:text="@string/salvar"
-                android:textColor="@color/colorWhite"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/cadastro_btn_limpar"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cadastro_cb_sex" />
+<!--            <Button-->
+<!--                android:id="@+id/cadastro_btn_salvar"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="32dp"-->
+<!--                android:layout_marginTop="32dp"-->
+<!--                android:layout_marginBottom="32dp"-->
+<!--                android:backgroundTint="@color/colorAccent"-->
+<!--                android:text="@string/salvar"-->
+<!--                android:textColor="@color/colorWhite"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toStartOf="@+id/cadastro_btn_limpar"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/cadastro_cb_sex" />-->
 
-            <Button
-                android:id="@+id/cadastro_btn_limpar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginBottom="32dp"
-                android:backgroundTint="@color/colorAccent"
-                android:text="@string/limpar"
-                android:textColor="@color/colorWhite"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/cadastro_btn_salvar"
-                app:layout_constraintTop_toBottomOf="@+id/cadastro_cb_sex" />
+<!--            <Button-->
+<!--                android:id="@+id/cadastro_btn_limpar"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="32dp"-->
+<!--                android:layout_marginEnd="32dp"-->
+<!--                android:layout_marginBottom="32dp"-->
+<!--                android:backgroundTint="@color/colorAccent"-->
+<!--                android:text="@string/limpar"-->
+<!--                android:textColor="@color/colorWhite"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toEndOf="@+id/cadastro_btn_salvar"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/cadastro_cb_sex" />-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

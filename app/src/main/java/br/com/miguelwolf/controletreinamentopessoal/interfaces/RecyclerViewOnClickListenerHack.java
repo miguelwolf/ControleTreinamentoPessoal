@@ -11,5 +11,6 @@ import android.view.View;
 public interface RecyclerViewOnClickListenerHack {
 
     public void onClickListener(View v, int position);
+    public boolean onLongClick(View view, int position);
 
 }

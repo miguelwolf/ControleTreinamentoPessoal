@@ -1,9 +1,13 @@
 package br.com.miguelwolf.controletreinamentopessoal.controller;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -12,13 +16,12 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import br.com.miguelwolf.controletreinamentopessoal.R;
 import br.com.miguelwolf.controletreinamentopessoal.model.Treino;
 
-public class CadastroActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener, RadioGroup.OnCheckedChangeListener {
+public class CadastroActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, RadioGroup.OnCheckedChangeListener {
 
     private ArrayAdapter aaExercicios;
 
@@ -26,29 +29,32 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
 
     private EditText etNome,
             etPassoPasso,
-                        etDescricao,
-                        etTempoRepeticoes;
+            etDescricao,
+            etTempoRepeticoes;
+
+    private int modo;
 
     private Spinner spExercicios;
 
     private RadioGroup rg;
     private RadioButton rbTempo,
-                            rbRepeticoes,
-                            rbLivre;
+            rbRepeticoes,
+            rbLivre;
+
+    private Treino treino;
 
     public static final String CADASTRO_RESULTADO = "cr";
+    public static final String MODO = "MODO";
+    public static final String TREINO = "TRE";
+    public static final int NOVO = 1;
+    public static final int ALTERAR = 2;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
-
-        ((TextView) findViewById(R.id.toolbar_tv_titulo)).setText(getString(R.string.cadastro));
-        findViewById(R.id.toolbar_iv_voltar).setOnClickListener(this);
-
-        findViewById(R.id.cadastro_btn_salvar).setOnClickListener(this);
-        findViewById(R.id.cadastro_btn_limpar).setOnClickListener(this);
 
         etNome = findViewById(R.id.cadastro_et_nome);
         etPassoPasso = findViewById(R.id.cadastro_et_passo_a_passo);
@@ -83,21 +89,76 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
         //Setting the ArrayAdapter data on the Spinner
         spExercicios.setAdapter(aaExercicios);
 
+
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+
+        if (bundle != null) {
+
+            modo = bundle.getInt(MODO, NOVO);
+
+            if (modo == NOVO) {
+
+                setTitle(getString(R.string.cadastro));
+
+            } else if (modo == ALTERAR) {
+                treino = bundle.getParcelable(TREINO);
+
+                try {
+                    etNome.setText(treino.getNome());
+                    etPassoPasso.setText(treino.getPassoAPasso());
+                    etDescricao.setText(treino.getDescricao());
+                    etTempoRepeticoes.setText(treino.getTempoRepeticoes());
+
+                    rbTempo.setChecked(treino.getTipoTempo() == Treino.TIPO_TEMPO_TEMPO);
+                    rbRepeticoes.setChecked(treino.getTipoTempo() == Treino.TIPO_TEMPO_REPETICOES);
+                    rbLivre.setChecked(treino.getTipoTempo() == Treino.TIPO_TEMPO_LIVRE);
+
+                    etTempoRepeticoes.setText(treino.getTempoRepeticoes());
+
+                    spExercicios.setSelection(treino.getTipoExercicios());
+
+                    chkSeg.setChecked(treino.getSeg() == 1);
+                    chkTer.setChecked(treino.getTer() == 1);
+                    chkQua.setChecked(treino.getQua() == 1);
+                    chkQui.setChecked(treino.getQui() == 1);
+                    chkSex.setChecked(treino.getSex() == 1);
+                    chkSab.setChecked(treino.getSab() == 1);
+                    chkDom.setChecked(treino.getDom() == 1);
+
+
+                    spExercicios = findViewById(R.id.cadastro_sp_exercicios);
+
+                    setTitle(getString(R.string.alterar_treino));
+
+                } catch (NullPointerException npe) {
+                    finish();
+                }
+            } else {
+                finish();
+            }
+        }
+
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+
     }
 
     @Override
-    public void onClick(View view) {
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_cadastro, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
-        switch (view.getId()) {
 
-            case R.id.toolbar_iv_voltar:
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-                onBackPressed();
+        switch (item.getItemId()) {
 
-                break;
-
-            case R.id.cadastro_btn_salvar:
-
+            case R.id.menu_cadastro_salvar:
                 if (verificarCampos()) {
 
                     Treino t = new Treino();
@@ -107,7 +168,14 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
                     t.setDescricao(etDescricao.getText().toString());
                     t.setTempoRepeticoes(etTempoRepeticoes.getText().toString());
 
-                    t.setTipoExercícios(spExercicios.getSelectedItemPosition());
+                    if (rbTempo.isChecked())
+                        t.setTipoTempo(Treino.TIPO_TEMPO_TEMPO);
+                    else if (rbRepeticoes.isChecked())
+                        t.setTipoTempo(Treino.TIPO_TEMPO_REPETICOES);
+                    else
+                        t.setTipoTempo(Treino.TIPO_TEMPO_LIVRE);
+
+                    t.setTipoExercicios(spExercicios.getSelectedItemPosition());
 
                     t.setSeg(chkSeg.isChecked() ? 1 : 0);
                     t.setTer(chkTer.isChecked() ? 1 : 0);
@@ -133,7 +201,7 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
 
                 break;
 
-            case R.id.cadastro_btn_limpar:
+            case R.id.menu_cadastro_limpar:
 
                 etNome.setText("");
                 etDescricao.setText("");
@@ -160,15 +228,32 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
 
                 break;
 
+            case android.R.id.home:
+                setResult(RESULT_CANCELED);
+                super.onBackPressed();
+                break;
+
             default:
                 break;
 
         }
 
+        return super.onOptionsItemSelected(item);
     }
 
 
-    private boolean verificarCampos(){
+    public static void alterarPessoa(AppCompatActivity activity, Treino treino) {
+
+        Intent intent = new Intent(activity, CadastroActivity.class);
+
+        intent.putExtra(MODO, ALTERAR);
+        intent.putExtra(TREINO, treino);
+
+        activity.startActivityForResult(intent, ALTERAR);
+    }
+
+
+    private boolean verificarCampos() {
 
         boolean valido = true;
 
