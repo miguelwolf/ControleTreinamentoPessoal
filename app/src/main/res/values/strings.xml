@@ -47,4 +47,14 @@
     <string name="excluir">Delete</string>
     <string name="novo_treino">New trainning</string>
     <string name="alterar_treino">Update trainning</string>
+    <string name="preferencias">Preferences</string>
+    <string name="dark">Theme dark</string>
+    <string name="ordem_lista">Ordem da lista</string>
+    <string name="itens_exibidos_vez">Itens exibidos por vez</string>
+    <string name="fechar_salvar">Fechar ao salvar</string>
+    <string name="exemplo_treino">Exemplo de treinos</string>
+    <string name="exemplo_nome">Home training</string>
+    <string name="exemplo_passo_passo" >Squat with jump, Polichinelo, Flexing arms with isometric board, Short abdominal, Stationary race</string>
+    <string name="exemplo_descricao">Basic training to burn excess fat</string>
+    <string name="exemplo_tempo_repeticoes">30 min.</string>
 </resources>

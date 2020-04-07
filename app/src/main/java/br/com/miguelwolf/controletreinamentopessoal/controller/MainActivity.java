@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.view.ActionMode;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,16 +20,22 @@ import android.widget.Toast;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import br.com.miguelwolf.controletreinamentopessoal.R;
 import br.com.miguelwolf.controletreinamentopessoal.adapter.TreinosAdapter;
 import br.com.miguelwolf.controletreinamentopessoal.interfaces.RecyclerViewOnClickListenerHack;
 import br.com.miguelwolf.controletreinamentopessoal.model.Treino;
+import br.com.miguelwolf.controletreinamentopessoal.utils.AppPrefs;
+import br.com.miguelwolf.controletreinamentopessoal.utils.Constants;
 
 public class MainActivity extends AppCompatActivity implements RecyclerViewOnClickListenerHack {
 
     private ActionMode actionMode;
+
+    private AppPrefs session;
 
     private ArrayList<Treino> mListTreino = new ArrayList<>();
     private ArrayList<Treino> mLIstTreinoJSON = new ArrayList<>();
@@ -97,6 +104,13 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewOnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        session = new AppPrefs(this);
+
+        if (session.isDark())
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        else
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
 
         rvTreinos = findViewById(R.id.activity_rv);
         rvTreinos.setHasFixedSize(true);
@@ -152,11 +166,17 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewOnCli
         switch (item.getItemId()) {
 
             case R.id.menu_main_adicionar:
-                startActivityForResult(new Intent(MainActivity.this, CadastroActivity.class), REQUEST_ADICIONAR);
+                Intent i = new Intent(MainActivity.this, CadastroActivity.class);
+                i.putExtra(CadastroActivity.MODO, CadastroActivity.NOVO);
+                startActivityForResult(i, REQUEST_ADICIONAR);
                 break;
 
             case R.id.menu_main_sobre:
                 startActivity(new Intent(MainActivity.this, SobreActivity.class));
+                break;
+
+            case R.id.menu_main_preferencias:
+                startActivity(new Intent(MainActivity.this, PreferenciasActivity.class));
                 break;
 
             default:
@@ -180,7 +200,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewOnCli
     private void atualizarLista() {
 
         mListTreino = new ArrayList<>();
-        mListTreino = getSetTreinoList(25);
+        mListTreino = getSetTreinoList(Constants.ITENS_EXIBICAO_VEZ_PARAMS[session.getItensExibicaoVez()]);
 
         adapterTreinos = new TreinosAdapter(this, mListTreino);
         adapterTreinos.setmRecyclerViewOnClickListenerHack(this);
@@ -292,5 +312,10 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewOnCli
             } catch (NullPointerException npe) {
             }
         }
+    }
+
+    public interface Predicate<T>
+    {
+        public boolean test(T t);
     }
 }

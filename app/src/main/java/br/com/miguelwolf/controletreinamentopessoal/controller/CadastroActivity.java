@@ -1,7 +1,6 @@
 package br.com.miguelwolf.controletreinamentopessoal.controller;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -20,8 +19,11 @@ import android.widget.Toast;
 
 import br.com.miguelwolf.controletreinamentopessoal.R;
 import br.com.miguelwolf.controletreinamentopessoal.model.Treino;
+import br.com.miguelwolf.controletreinamentopessoal.utils.AppPrefs;
 
 public class CadastroActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, RadioGroup.OnCheckedChangeListener {
+
+    private AppPrefs session;
 
     private ArrayAdapter aaExercicios;
 
@@ -55,6 +57,8 @@ public class CadastroActivity extends AppCompatActivity implements AdapterView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
+
+        session = new AppPrefs(this);
 
         etNome = findViewById(R.id.cadastro_et_nome);
         etPassoPasso = findViewById(R.id.cadastro_et_passo_a_passo);
@@ -98,6 +102,9 @@ public class CadastroActivity extends AppCompatActivity implements AdapterView.O
             modo = bundle.getInt(MODO, NOVO);
 
             if (modo == NOVO) {
+
+                if (session.isExemploTreino())
+                    inserirExemplo();
 
                 setTitle(getString(R.string.cadastro));
 
@@ -146,6 +153,20 @@ public class CadastroActivity extends AppCompatActivity implements AdapterView.O
 
     }
 
+    private void inserirExemplo() {
+        etNome.setText(getString(R.string.exemplo_nome));
+        etPassoPasso.setText(getString(R.string.exemplo_passo_passo));
+        etDescricao.setText(getString(R.string.exemplo_descricao));
+        etTempoRepeticoes.setText(getString(R.string.exemplo_tempo_repeticoes));
+        rbTempo.setChecked(true);
+
+        spExercicios.setSelection(0);
+
+        chkSeg.setChecked(true);
+        chkQua.setChecked(true);
+        chkSex.setChecked(true);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_cadastro, menu);
@@ -190,7 +211,9 @@ public class CadastroActivity extends AppCompatActivity implements AdapterView.O
                     b.putParcelable(CADASTRO_RESULTADO, t);
                     resultIntent.putExtras(b);
                     setResult(RESULT_OK, resultIntent);
-                    finish();
+
+                    if (session.isExemploTreino())
+                        finish();
 
 //                    mListReserva.add(r);
 

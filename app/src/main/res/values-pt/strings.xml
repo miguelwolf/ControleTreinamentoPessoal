@@ -48,4 +48,14 @@
     <string name="excluir">Excluir</string>
     <string name="novo_treino">Novo Treino</string>
     <string name="alterar_treino">Alterar Treino</string>
+    <string name="preferencias">Preferências</string>
+    <string name="dark">Theme dark</string>
+    <string name="ordem_lista">Ordem da lista</string>
+    <string name="fechar_salvar">Fechar ao salvar</string>
+    <string name="itens_exibidos_vez">Itens exibidos por vez</string>
+    <string name="exemplo_treino">Exemplo de treinos</string>
+    <string name="exemplo_nome">Treino em casa</string>
+    <string name="exemplo_passo_passo" >Agachamento com salto, Polichinelo, Flexão de braços com prancha isométrica, Abdominal curto, Corrida estacionária</string>
+    <string name="exemplo_descricao">Treino básico para queimar excessos de gordura</string>
+    <string name="exemplo_tempo_repeticoes">30 min.</string>
 </resources>
