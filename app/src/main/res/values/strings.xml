@@ -57,4 +57,10 @@
     <string name="exemplo_passo_passo" >Squat with jump, Polichinelo, Flexing arms with isometric board, Short abdominal, Stationary race</string>
     <string name="exemplo_descricao">Basic training to burn excess fat</string>
     <string name="exemplo_tempo_repeticoes">30 min.</string>
+    <string name="atencao">Attention</string>
+    <string name="deseja_excluir">Do you really want to delete this workout?</string>
+    <string name="sim">Yes</string>
+    <string name="nao">No</string>
+    <string name="registro_inserido">Registry inserted successfully</string>
+    <string name="erro_inserir">Failed to insert record</string>
 </resources>

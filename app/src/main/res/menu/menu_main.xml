@@ -13,10 +13,12 @@
         android:id="@+id/menu_main_sobre"
         android:orderInCategory="100"
         android:title="@string/sobre"
+        android:iconTint="@color/colorWhite"
         app:showAsAction="never" />
     <item
         android:id="@+id/menu_main_preferencias"
         android:orderInCategory="100"
         android:title="@string/preferencias"
+        android:iconTint="@color/colorWhite"
         app:showAsAction="never" />
 </menu>

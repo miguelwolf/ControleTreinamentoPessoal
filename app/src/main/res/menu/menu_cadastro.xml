@@ -7,11 +7,13 @@
         android:orderInCategory="100"
         android:title="@string/salvar"
         android:icon="@drawable/ic_save_white_18dp"
+        android:iconTint="@color/colorWhite"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/menu_cadastro_limpar"
         android:orderInCategory="100"
         android:icon="@drawable/ic_clear_white_18dp"
         android:title="@string/limpar"
+        android:iconTint="@color/colorWhite"
         app:showAsAction="ifRoom" />
 </menu>

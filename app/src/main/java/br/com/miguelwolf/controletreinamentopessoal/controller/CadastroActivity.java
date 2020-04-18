@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import br.com.miguelwolf.controletreinamentopessoal.R;
 import br.com.miguelwolf.controletreinamentopessoal.model.Treino;
+import br.com.miguelwolf.controletreinamentopessoal.persistencia.TreinoDatabase;
 import br.com.miguelwolf.controletreinamentopessoal.utils.AppPrefs;
 
 public class CadastroActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, RadioGroup.OnCheckedChangeListener {
@@ -184,6 +185,9 @@ public class CadastroActivity extends AppCompatActivity implements AdapterView.O
 
                     Treino t = new Treino();
 
+                    if (treino != null)
+                        t.setId(treino.getId());
+
                     t.setNome(etNome.getText().toString());
                     t.setPassoAPasso(etPassoPasso.getText().toString());
                     t.setDescricao(etDescricao.getText().toString());
@@ -205,6 +209,12 @@ public class CadastroActivity extends AppCompatActivity implements AdapterView.O
                     t.setSex(chkSex.isChecked() ? 1 : 0);
                     t.setSab(chkSab.isChecked() ? 1 : 0);
                     t.setDom(chkDom.isChecked() ? 1 : 0);
+
+                    if (modo == NOVO) {
+                        TreinoDatabase.getDatabase(this).treinoDAO().insert(t);
+                    } else {
+                        TreinoDatabase.getDatabase(this).treinoDAO().update(t);
+                    }
 
                     Intent resultIntent = new Intent();
                     Bundle b = new Bundle();
@@ -265,7 +275,7 @@ public class CadastroActivity extends AppCompatActivity implements AdapterView.O
     }
 
 
-    public static void alterarPessoa(AppCompatActivity activity, Treino treino) {
+    public static void alterarTreino(AppCompatActivity activity, Treino treino) {
 
         Intent intent = new Intent(activity, CadastroActivity.class);
 

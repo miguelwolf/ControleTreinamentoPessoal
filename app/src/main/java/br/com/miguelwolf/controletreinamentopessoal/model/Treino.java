@@ -3,13 +3,19 @@ package br.com.miguelwolf.controletreinamentopessoal.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+@Entity
 public class Treino implements Parcelable, Cloneable {
 
+    @PrimaryKey(autoGenerate = true)
+    private int id;
     private String nome;
     private String descricao;
     private String passoAPasso;
@@ -33,7 +39,22 @@ public class Treino implements Parcelable, Cloneable {
     public Treino() {
     }
 
-    public Treino(String nome, String descricao, String passoAPasso, String tempoRepeticoes, int tipoTempo, int tipoExercicios, int seg, int ter, int qua, int qui, int sex, int sab, int dom) {
+    public Treino(int id, String nome, String descricao, int tipoExercicios, int seg, int ter, int qua, int qui, int sex, int sab, int dom) {
+        this.id = id;
+        this.nome = nome;
+        this.descricao = descricao;
+        this.tipoExercicios = tipoExercicios;
+        this.seg = seg;
+        this.ter = ter;
+        this.qua = qua;
+        this.qui = qui;
+        this.sex = sex;
+        this.sab = sab;
+        this.dom = dom;
+    }
+
+    public Treino(int id, String nome, String descricao, String passoAPasso, String tempoRepeticoes, int tipoTempo, int tipoExercicios, int seg, int ter, int qua, int qui, int sex, int sab, int dom) {
+        this.id = id;
         this.nome = nome;
         this.descricao = descricao;
         this.passoAPasso = passoAPasso;
@@ -101,6 +122,13 @@ public class Treino implements Parcelable, Cloneable {
 
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
@@ -220,6 +248,7 @@ public class Treino implements Parcelable, Cloneable {
     }
 
     protected Treino(Parcel in) {
+        id = in.readInt();
         nome = in.readString();
         descricao = in.readString();
         passoAPasso = in.readString();
@@ -243,6 +272,7 @@ public class Treino implements Parcelable, Cloneable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
 
+        dest.writeInt(id);
         dest.writeString(nome);
         dest.writeString(descricao);
         dest.writeString(passoAPasso);

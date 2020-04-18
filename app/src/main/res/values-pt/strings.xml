@@ -58,4 +58,10 @@
     <string name="exemplo_passo_passo" >Agachamento com salto, Polichinelo, Flexão de braços com prancha isométrica, Abdominal curto, Corrida estacionária</string>
     <string name="exemplo_descricao">Treino básico para queimar excessos de gordura</string>
     <string name="exemplo_tempo_repeticoes">30 min.</string>
+    <string name="atencao">Atenção</string>
+    <string name="deseja_excluir">Deseja realmente excluir este treino?</string>
+    <string name="sim">Sim</string>
+    <string name="nao">Não</string>
+    <string name="registro_inserido">Registro Inserido com sucesso</string>
+    <string name="erro_inserir">Erro ao inserir registro</string>
 </resources>

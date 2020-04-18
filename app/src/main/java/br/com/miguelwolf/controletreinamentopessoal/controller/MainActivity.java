@@ -1,11 +1,13 @@
 package br.com.miguelwolf.controletreinamentopessoal.controller;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.view.ActionMode;
@@ -20,14 +22,13 @@ import android.widget.Toast;
 
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import br.com.miguelwolf.controletreinamentopessoal.R;
 import br.com.miguelwolf.controletreinamentopessoal.adapter.TreinosAdapter;
 import br.com.miguelwolf.controletreinamentopessoal.interfaces.RecyclerViewOnClickListenerHack;
 import br.com.miguelwolf.controletreinamentopessoal.model.Treino;
+import br.com.miguelwolf.controletreinamentopessoal.persistencia.TreinoDatabase;
 import br.com.miguelwolf.controletreinamentopessoal.utils.AppPrefs;
 import br.com.miguelwolf.controletreinamentopessoal.utils.Constants;
 
@@ -37,8 +38,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewOnCli
 
     private AppPrefs session;
 
-    private ArrayList<Treino> mListTreino = new ArrayList<>();
-    private ArrayList<Treino> mLIstTreinoJSON = new ArrayList<>();
+    private List<Treino> mListTreino = new ArrayList<>();
+    private List<Treino> mLIstTreinoJSON = new ArrayList<>();
 
     private int posicaoSelecionada = -1;
 
@@ -66,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewOnCli
         }
 
         @Override
-        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+        public boolean onActionItemClicked(final ActionMode mode, MenuItem item) {
 
             switch (item.getItemId()) {
                 case R.id.menuItemAlterar:
@@ -75,8 +76,25 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewOnCli
                     return true;
 
                 case R.id.menuItemExcluir:
-                    excluirItem();
-                    mode.finish();
+                    AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                    alertDialog.setTitle(getString(R.string.atencao));
+                    alertDialog.setMessage(getString(R.string.deseja_excluir));
+                    alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.sim),
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    excluirItem();
+                                    mode.finish();
+                                    dialog.dismiss();
+                                }
+                            });
+                    alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.nao),
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                    mode.finish();
+                                }
+                            });
+                    alertDialog.show();
                     return true;
 
                 default:
@@ -105,6 +123,9 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewOnCli
         setContentView(R.layout.activity_main);
 
         session = new AppPrefs(this);
+
+//        new CriaBanco(this);
+
 
         if (session.isDark())
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
@@ -193,6 +214,10 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewOnCli
 
 //        mLIstTreinoJSON = Treino.getList(50);
 
+        TreinoDatabase treinoDatabase = TreinoDatabase.getDatabase(this);
+
+        mLIstTreinoJSON = treinoDatabase.treinoDAO().queryAll();
+
         atualizarLista();
 
     }
@@ -269,6 +294,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewOnCli
     }
 
     private void excluirItem() {
+        TreinoDatabase.getDatabase(this).treinoDAO().delete(mLIstTreinoJSON.get(posicaoSelecionada));
         mLIstTreinoJSON.remove(posicaoSelecionada);
         atualizarLista();
     }
@@ -277,7 +303,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewOnCli
 
         Treino t = mLIstTreinoJSON.get(posicaoSelecionada);
 
-        CadastroActivity.alterarPessoa(this, t);
+        CadastroActivity.alterarTreino(this, t);
     }
 
 
@@ -295,7 +321,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewOnCli
 
                 if (requestCode == CadastroActivity.ALTERAR) {
 
-                    mLIstTreinoJSON.set(posicaoSelecionada, t);
+//                    mLIstTreinoJSON.set(posicaoSelecionada, t);
+                    mLIstTreinoJSON = mLIstTreinoJSON = TreinoDatabase.getDatabase(this).treinoDAO().queryAll();
                     atualizarLista();
 //                    Treino treino = listaPessoas.get(posicaoSelecionada);
 //                    pessoa.setNome(nome);
@@ -304,7 +331,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewOnCli
                 } else if ((requestCode == REQUEST_ADICIONAR)) {
 
                     if (t != null) {
-                        mLIstTreinoJSON.add(t);
+//                        mLIstTreinoJSON.add(t);
+                        mLIstTreinoJSON = TreinoDatabase.getDatabase(this).treinoDAO().queryAll();
                         atualizarLista();
                     }
 
